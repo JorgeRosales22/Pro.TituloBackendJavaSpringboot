@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "914f0f6b-141b-4c81-af13-57987d656fe1",
+		"name": "postmanTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30836029"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/usuario/all",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"andres\",\r\n  \"lastName\": \"ruiz\",\r\n  \"email\": \"j.a.rosales.ruiz05@gmail.com\",\r\n  \"password\": \"381e83c7f0ec8ffb6b400e2f66862adfba56884ce0a752860b3d411e3afe796c\",\r\n  \"rol\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario/register_usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"register_usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/usuario/login_user?email=j.a.rosales.ruiz@gmail.com&password=381e83c7f0ec8ffb6b400e2f66862adfba56884ce0a752860b3d411e3afe796c",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/usuario/login_user?email=j.a.rosales.ruiz@gmail.com&password=381e83c7f0ec8ffb6b400e2f66862adfba56884ce0a752860b3d411e3afe796c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"login_user"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "j.a.rosales.ruiz@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "381e83c7f0ec8ffb6b400e2f66862adfba56884ce0a752860b3d411e3afe796c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/boleto/guardar_mensaje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"1\",\r\n  \"state\": \"pendiente\",\r\n  \"content\": \"mensaje genericode prueba\",\r\n  \"destiny\": \"administrador\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/boleto/send-message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"boleto",
+						"send-message"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "pendiente",
+							"disabled": true
+						},
+						{
+							"key": "content",
+							"value": "contenido variado del mensaje",
+							"disabled": true
+						},
+						{
+							"key": "destiny",
+							"value": "administrador",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/usuario/delete/?email=leopoldo.hernandez12@gmail.com",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario/delete/?email=leopoldo.hernandez12@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"delete",
+						""
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "leopoldo.hernandez12@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/usuario/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/usuario/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/boleto/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/boleto/ticket?email=j.a.rosales.ruiz05@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"boleto",
+						"ticket"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "j.a.rosales.ruiz05@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/boleto/10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/boleto/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"boleto",
+						"10"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "j.a.rosales.ruiz05@gmail.com",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
