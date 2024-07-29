@@ -8,18 +8,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+import static com.ComexUp.Aplicacion.shared.contants.ConstantsPaths.TICKET_PATH;
+import static com.ComexUp.Aplicacion.shared.contants.ConstantsProperties.*;
+
 @RestController
-@RequestMapping("/boleto")
+@RequestMapping(value = TICKET_PATH)
 public class BoletoController {
 
     @Autowired
     private TicketService ticketService;
 
-    @GetMapping("/all")
+    @GetMapping(value = GLOBAL_PATH)
     public ResponseEntity<List<Ticket>> getAll(){
         return new ResponseEntity<>(ticketService.getAll(), HttpStatus.OK);
     }
-    @GetMapping("/{id}")
+    @GetMapping(value = GET_BY_ID_PATH)
     public ResponseEntity<Ticket> getTicket(@PathVariable("id") int ticketId){
          Ticket ticket = ticketService.getTicket(ticketId);
         if (ticket != null){
@@ -27,7 +30,7 @@ public class BoletoController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    @GetMapping("/ticket")
+    @GetMapping(value = GET_USER_TICKET_PATH)
     public ResponseEntity<List<Ticket>> getByUserId(@RequestParam String email) {
         List<Ticket> tickets = ticketService.getByUser(email);
         if(tickets != null) {
@@ -40,7 +43,7 @@ public class BoletoController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PatchMapping("/editar")
+    @PatchMapping(value = SAVE_TICKET_PATH)
     public ResponseEntity<String> updateTicket(@RequestBody Ticket ticket) {
       try {
           if (ticket != null) {
@@ -53,7 +56,7 @@ public class BoletoController {
                return new ResponseEntity<>("Error al procesar la solicitud", HttpStatus.INTERNAL_SERVER_ERROR);
             }
      }
-    @PostMapping("/send-message")
+    @PostMapping(value = SEND_TICKET_PATH)
     public ResponseEntity<String> save(@RequestBody Ticket ticket) {
         try {
             if (ticket != null) {
@@ -66,7 +69,7 @@ public class BoletoController {
             return new ResponseEntity<>("Error al procesar la solicitud", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(value = DELETE_ID)
     public ResponseEntity delete(@PathVariable("id") int ticketId){
         if(ticketService.delete(ticketId)){
             return new ResponseEntity<>(HttpStatus.OK);

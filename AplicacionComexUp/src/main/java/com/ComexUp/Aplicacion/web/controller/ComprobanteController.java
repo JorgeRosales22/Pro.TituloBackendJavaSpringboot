@@ -8,24 +8,26 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import static com.ComexUp.Aplicacion.shared.contants.ConstantsPaths.VOUCHER_PATH;
+import static com.ComexUp.Aplicacion.shared.contants.ConstantsProperties.*;
 
 @RestController
-@RequestMapping("/comprobante")
+@RequestMapping(value = VOUCHER_PATH)
 public class ComprobanteController {
 
     @Autowired
     private VoucherService voucherService;
 
-    @GetMapping("/all")
+    @GetMapping(value = GLOBAL_PATH)
     public ResponseEntity<List<Voucher>> getAll(){
         return new ResponseEntity<>(voucherService.getAll(), HttpStatus.OK);
     }
-    @GetMapping("/{id}")
+    @GetMapping(value = GET_BY_ID_PATH)
     public ResponseEntity<List<Voucher>> getVoucher(@PathVariable("id") int voucherId){
         return voucherService.getVoucher(voucherId).map(vouchers -> new ResponseEntity<>(vouchers,HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    @GetMapping("/voucher/{id}")
+    @GetMapping(value = GET_VOUCHER_BY_ID_PATH)
     public ResponseEntity<List<Voucher>> getByUserId(@PathVariable("id") int userId){
         return voucherService.getByUserId(userId).map(vouchers -> new ResponseEntity<>(vouchers, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -34,7 +36,7 @@ public class ComprobanteController {
     public ResponseEntity<Voucher> save(@RequestBody Voucher voucher){
         return new ResponseEntity<>(voucherService.save(voucher),HttpStatus.CREATED);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(value = DELETE_ID)
     public ResponseEntity delete(int voucherId){
         if(voucherService.delete(voucherId)){
             return new ResponseEntity<>(HttpStatus.OK);
